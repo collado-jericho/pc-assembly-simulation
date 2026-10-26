@@ -1,0 +1,1521 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background: #05070a;
+  color: #eef2f5;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      rgba(35, 75, 115, 0.16),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 35% 100%,
+      rgba(20, 45, 70, 0.12),
+      transparent 45%
+    ),
+    #05070a;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 360px;
+  min-width: 360px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 20px 18px;
+
+  position: relative;
+  z-index: 20;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 17, 24, 0.98) 0%,
+      rgba(7, 11, 16, 0.98) 100%
+    );
+
+  border-right:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    14px 0 45px
+    rgba(0, 0, 0, 0.38);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding:
+    2px 4px 20px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #182432,
+      #0d141d
+    );
+
+  border:
+    1px solid
+    rgba(92, 170, 255, 0.18);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.06),
+    0 5px 20px
+    rgba(0, 0, 0, 0.22);
+
+  font-size: 23px;
+}
+
+.brand h1 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 800;
+
+  letter-spacing: -0.65px;
+
+  color: #f4f7fa;
+}
+
+.brand p {
+  margin: 4px 0 0;
+
+  color: #75818c;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.15px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 16px;
+}
+
+.stat {
+  min-height: 76px;
+
+  padding: 12px 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.025);
+}
+
+.stat span {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: #7f8b96;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.65px;
+
+  margin-bottom: 6px;
+}
+
+.stat strong {
+  color: #f1f5f8;
+
+  font-size: 20px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress {
+  height: 7px;
+
+  margin:
+    15px 0 18px;
+
+  padding: 1px;
+
+  background:
+    #151b22;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.04);
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+
+  min-width: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2774f5 0%,
+      #338fff 55%,
+      #55c9ff 100%
+    );
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 0 12px
+    rgba(54, 147, 255, 0.38);
+
+  transition:
+    width 0.35s
+    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* =========================================================
+   COMPONENT SECTION
+========================================================= */
+
+.component-list {
+  /*
+    IMPORTANT:
+    This makes the component area scroll instead of
+    pushing the Power button off the screen.
+  */
+
+  flex: 1;
+
+  min-height: 0;
+
+  overflow-y: auto;
+
+  padding:
+    2px 4px 12px;
+}
+
+
+/* Hide scrollbar but keep scrolling */
+
+.component-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.component-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.component-list::-webkit-scrollbar-thumb {
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  border-radius: 10px;
+}
+
+.component-list::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(255, 255, 255, 0.18);
+}
+
+
+/* Components title */
+
+.component-list h3 {
+  margin:
+    0 0 9px;
+
+  padding:
+    0 4px;
+
+  color: #e9edf1;
+
+  font-size: 12px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   COMPONENT ROW
+========================================================= */
+
+.component {
+  min-height: 37px;
+
+  display: grid;
+
+  grid-template-columns:
+    26px 1fr auto;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 4px;
+
+  padding:
+    6px 9px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 9px;
+
+  color: #aeb7bf;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  font-size: 13px;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.component:hover {
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  border-color:
+    rgba(255, 255, 255, 0.06);
+
+  transform: translateX(2px);
+}
+
+
+/* Installed component */
+
+.component.installed {
+  color: #e2e8ec;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(37, 190, 105, 0.09),
+      rgba(37, 190, 105, 0.025)
+    );
+
+  border-color:
+    rgba(46, 206, 119, 0.13);
+}
+
+
+/* First icon/check column */
+
+.component > span:first-child {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: #65717b;
+
+  font-size: 12px;
+}
+
+.component.installed > span:first-child {
+  background:
+    rgba(39, 202, 111, 0.12);
+
+  color: #48dc8a;
+}
+
+
+/* =========================================================
+   COMPATIBILITY WITH YOUR OTHER CLASS NAMES
+========================================================= */
+
+.parts-list {
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  overflow-y: auto;
+
+  margin-bottom: 12px;
+}
+
+.parts-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.parts-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.parts-list::-webkit-scrollbar-thumb {
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  border-radius: 10px;
+}
+
+.part-row {
+  min-height: 37px;
+
+  display: grid;
+
+  grid-template-columns:
+    25px 1fr auto;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding:
+    6px 8px;
+
+  border-radius: 9px;
+
+  color: #aeb7bf;
+
+  font-size: 13px;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.part-row:hover {
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  transform: translateX(2px);
+}
+
+.part-row.installed {
+  color: #e2e8ec;
+}
+
+.part-row small {
+  font-size: 8px;
+
+  color: #4dd88a;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.controls {
+  flex-shrink: 0;
+
+  padding-top: 10px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 11, 16, 0.65),
+      rgba(7, 11, 16, 1)
+    );
+}
+
+
+/* =========================================================
+   POWER BUTTON
+========================================================= */
+
+.power-button {
+  width: 100%;
+
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #246ce8,
+      #347ff3
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.25px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 25px
+    rgba(35, 108, 235, 0.24),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    filter 0.16s ease;
+}
+
+.power-button:hover {
+  transform: translateY(-1px);
+
+  filter: brightness(1.06);
+
+  box-shadow:
+    0 11px 30px
+    rgba(35, 108, 235, 0.34),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.15);
+}
+
+.power-button:active {
+  transform: translateY(1px);
+}
+
+.power-button.powered {
+  background:
+    linear-gradient(
+      135deg,
+      #15934a,
+      #21bd67
+    );
+
+  box-shadow:
+    0 8px 25px
+    rgba(25, 188, 96, 0.25);
+}
+
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+.reset-button {
+  width: 100%;
+
+  min-height: 39px;
+
+  margin-top: 8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  color: #7f8b94;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15px;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.reset-button:hover {
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  border-color:
+    rgba(255, 255, 255, 0.13);
+
+  color: #e7ecef;
+}
+
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+
+.instructions {
+  flex-shrink: 0;
+
+  margin-top: 12px;
+
+  padding-top: 11px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  color: #68747e;
+
+  font-size: 9px;
+
+  line-height: 1.4;
+}
+
+.instructions strong {
+  color: #aab4bc;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.success {
+  flex-shrink: 0;
+
+  margin-top: 9px;
+
+  padding: 11px 12px;
+
+  border:
+    1px solid
+    rgba(53, 211, 119, 0.22);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(31, 177, 91, 0.10),
+      rgba(31, 177, 91, 0.035)
+    );
+
+  border-radius: 10px;
+
+  color: #58dc8c;
+}
+
+.success strong {
+  display: block;
+
+  font-size: 11px;
+
+  margin-bottom: 3px;
+}
+
+.success span {
+  color: #819b8b;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   3D SCENE
+========================================================= */
+
+.scene {
+  position: relative;
+
+  flex: 1;
+
+  width: calc(100vw - 360px);
+
+  height: 100vh;
+
+  min-width: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(35, 61, 86, 0.10),
+      transparent 55%
+    );
+}
+
+.scene canvas {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  outline: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .sidebar {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  .scene {
+    width: calc(100vw - 300px);
+  }
+
+  .brand h1 {
+    font-size: 19px;
+  }
+
+  .component {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .sidebar {
+    width: 260px;
+    min-width: 260px;
+
+    padding:
+      16px 13px 12px;
+  }
+
+  .scene {
+    width: calc(100vw - 260px);
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 19px;
+  }
+
+  .brand h1 {
+    font-size: 16px;
+  }
+
+  .brand p {
+    font-size: 9px;
+  }
+
+  .stat {
+    min-height: 62px;
+    padding: 9px;
+  }
+
+  .stat strong {
+    font-size: 16px;
+  }
+
+  .component {
+    min-height: 32px;
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .app {
+    width: 100vw;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  /* =======================================================
+     SIDEBAR ON TOP
+  ======================================================= */
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+
+    height: auto;
+
+    padding:
+      8px 10px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+      0 5px 20px
+      rgba(0, 0, 0, 0.35);
+
+    flex-shrink: 0;
+
+    z-index: 20;
+  }
+
+
+  /* =======================================================
+     BRAND
+  ======================================================= */
+
+  .brand {
+    padding-bottom: 7px;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+
+    font-size: 17px;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .brand p {
+    font-size: 7px;
+
+    margin-top: 2px;
+  }
+
+
+  /* =======================================================
+     STATS
+  ======================================================= */
+
+  .stats {
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 5px;
+
+    margin-top: 6px;
+  }
+
+  .stat {
+    min-height: 42px;
+
+    padding: 5px 7px;
+
+    border-radius: 6px;
+  }
+
+  .stat span {
+    font-size: 7px;
+
+    margin-bottom: 2px;
+  }
+
+  .stat strong {
+    font-size: 12px;
+  }
+
+
+  /* =======================================================
+     PROGRESS
+  ======================================================= */
+
+  .progress {
+    height: 4px;
+
+    margin:
+      6px 0 7px;
+  }
+
+
+  /* =======================================================
+     COMPONENT LIST
+  ======================================================= */
+
+  .component-list h3 {
+    font-size: 8px;
+
+    margin:
+      4px 0;
+  }
+
+  .component-list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 2px 5px;
+
+    max-height: 82px;
+
+    overflow-y: auto;
+
+    margin-bottom: 6px;
+  }
+
+  .component {
+    min-height: 20px;
+
+    margin-bottom: 0;
+
+    padding:
+      2px 4px;
+
+    font-size: 8px;
+
+    border-radius: 4px;
+  }
+
+  .component > span:first-child {
+    width: 17px;
+    height: 17px;
+
+    font-size: 8px;
+  }
+
+
+  /* =======================================================
+     BUTTONS
+  ======================================================= */
+
+  .power-button {
+    width: 100%;
+
+    min-height: 34px;
+
+    font-size: 10px;
+
+    border-radius: 6px;
+  }
+
+  .reset-button {
+    min-height: 27px;
+
+    margin-top: 4px;
+
+    font-size: 8px;
+
+    border-radius: 6px;
+  }
+
+
+  /* =======================================================
+     HIDE EXTRA CONTENT ON PHONE
+  ======================================================= */
+
+  .instructions {
+    display: none;
+  }
+
+  .success {
+    display: none;
+  }
+
+  .tooltip-box {
+    display: none;
+  }
+
+
+  /* =======================================================
+     3D SCENE
+  ======================================================= */
+
+  .scene {
+    width: 100%;
+
+    height: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+  }
+
+  .scene canvas {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .sidebar {
+    padding:
+      6px 8px;
+  }
+
+  .brand h1 {
+    font-size: 13px;
+  }
+
+  .brand p {
+    font-size: 6px;
+  }
+
+  .stats {
+    gap: 4px;
+  }
+
+  .stat {
+    min-height: 38px;
+
+    padding:
+      4px 6px;
+  }
+
+  .stat span {
+    font-size: 6px;
+  }
+
+  .stat strong {
+    font-size: 11px;
+  }
+
+  .progress {
+    margin:
+      4px 0 5px;
+  }
+
+  .component-list {
+    max-height: 70px;
+  }
+
+  .component {
+    min-height: 18px;
+
+    font-size: 7px;
+  }
+
+  .component > span:first-child {
+    width: 15px;
+    height: 15px;
+
+    font-size: 7px;
+  }
+
+  .power-button {
+    min-height: 31px;
+
+    font-size: 9px;
+  }
+
+  .reset-button {
+    min-height: 25px;
+
+    font-size: 7px;
+  }
+}
+
+
+/* =========================================================
+   PHONE LANDSCAPE
+========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .app {
+    flex-direction: row;
+
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+
+    height: 100dvh;
+
+    overflow-y: auto;
+
+    border-right:
+      1px solid
+      rgba(255, 255, 255, 0.10);
+
+    border-bottom: 0;
+  }
+
+  .scene {
+    width: calc(100vw - 220px);
+
+    height: 100dvh;
+  }
+
+  .component-list {
+    display: flex;
+
+    flex-direction: column;
+
+    max-height: none;
+  }
+
+  .instructions {
+    display: flex;
+  }
+
+  .success {
+    display: block;
+  }
+}
+
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.tooltip-box {
+  margin-top: 16px;
+
+  padding: 12px;
+
+  background:
+    rgba(59, 130, 246, 0.12);
+
+  border:
+    1px solid
+    rgba(59, 130, 246, 0.4);
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  color: #dbeafe;
+}
+
+.tooltip-box strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #93c5fd;
+}
+
+/* =========================================================
+   FLOW SCREENS (Home / Pre-Test / Post-Test / Results)
+========================================================= */
+
+.flow-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:
+    radial-gradient(circle at 75% 45%, rgba(35, 75, 115, 0.16), transparent 42%),
+    radial-gradient(circle at 35% 100%, rgba(20, 45, 70, 0.12), transparent 45%),
+    #05070a;
+}
+
+.flow-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.flow-header h1 {
+  margin: 10px 0 6px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #f4f7fa;
+}
+
+.flow-header p {
+  color: #7f8b96;
+  font-size: 13px;
+}
+
+.flow-choices {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flow-card {
+  width: 240px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+  color: #eef2f5;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+
+.flow-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(52, 143, 255, 0.4);
+}
+
+.flow-card-icon {
+  font-size: 34px;
+}
+
+.flow-card strong {
+  font-size: 15px;
+}
+
+.flow-card span:last-child {
+  font-size: 12px;
+  color: #7f8b96;
+  text-align: center;
+}
+
+.quiz-list {
+  width: 100%;
+  max-width: 680px;
+  margin-top: 10px;
+}
+
+.quiz-question {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.quiz-q-text {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #eef2f5;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #aeb7bf;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.quiz-option.selected {
+  background: rgba(52, 143, 255, 0.15);
+  color: #eef2f5;
+}
+
+.quiz-answer-line {
+  font-size: 12px;
+  color: #7f8b96;
+  margin: 2px 0;
+}
+
+.quiz-answer-line.correct {
+  color: #48dc8a;
+}
+
+.score-card {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.score-big {
+  font-size: 48px;
+  font-weight: 800;
+  color: #f4f7fa;
+}
+
+.score-breakdown {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.score-correct {
+  color: #48dc8a;
+}
+
+.score-incorrect {
+  color: #f87171;
+}
+
+.flow-submit-btn {
+  max-width: 320px;
+  margin-top: 20px;
+}
+
+/* =========================================================
+   FAULT DIAGNOSIS MODE
+========================================================= */
+
+/* hide spoilers: the checklist and progress bar would reveal the missing part */
+.diagnose-mode .component-list,
+.diagnose-mode .progress {
+  display: none;
+}
+
+.diagnosis-panel {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: 16px;
+  padding: 2px 4px 10px;
+  color: #aeb7bf;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.diagnosis-step {
+  margin: 0 0 8px;
+  color: #e9edf1;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.diagnosis-symptom {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.08);
+  border-radius: 10px;
+  color: #fecaca;
+}
+
+.diagnosis-question {
+  margin: 14px 0 8px;
+  color: #e9edf1;
+  font-weight: 600;
+}
+
+.diagnosis-option {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e2e8ec;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.diagnosis-option:hover:not(:disabled) {
+  background: rgba(52, 143, 255, 0.15);
+  border-color: rgba(52, 143, 255, 0.4);
+}
+
+.diagnosis-option.wrong {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.35);
+  color: #fca5a5;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.diagnosis-good {
+  padding: 12px;
+  border: 1px solid rgba(53, 211, 119, 0.25);
+  background: rgba(31, 177, 91, 0.08);
+  border-radius: 10px;
+  color: #a7f3d0;
+}
+
+.diagnosis-stats {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.diagnosis-stats li {
+  padding: 3px 0;
+}
+
+.diagnosis-note {
+  font-size: 11px;
+  color: #7f8b96;
+}
